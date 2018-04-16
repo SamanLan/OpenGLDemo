@@ -4,6 +4,8 @@ import android.opengl.GLSurfaceView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.samanlan.opengldemo.render.Trianle;
+
 public class MainActivity extends AppCompatActivity {
 
     boolean isRenderSet = false;
@@ -13,7 +15,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mGLSurfaceView = new GLSurfaceView(this);
-        mGLSurfaceView.setRenderer(new CustomRenderer(this));
+        // 设置OpenGLES版本为2.0
+        mGLSurfaceView.setEGLContextClientVersion(2);
+        mGLSurfaceView.setRenderer(new Trianle(this));
+
         isRenderSet = true;
         setContentView(mGLSurfaceView);
     }

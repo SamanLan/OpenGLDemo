@@ -38,7 +38,7 @@ public class GLHelper {
     }
 
     public static int compileShader(int type, String shaderCode) {
-        if (type == GLES20.GL_VERTEX_SHADER || type == GLES20.GL_FRAGMENT_SHADER) {
+        if (type != GLES20.GL_VERTEX_SHADER && type != GLES20.GL_FRAGMENT_SHADER) {
             return 0;
         }
         // 创建一个新的着色器对象
@@ -49,6 +49,8 @@ public class GLHelper {
         }
         // 有了对象就上传源代码，将对象与代码关联起来
         GLES20.glShaderSource(shaderObjectId, shaderCode);
+        // 关联后要完成
+        GLES20.glCompileShader(shaderObjectId);
         final int[] compileStatus = new int[1];
         // 读取与shaderObjectId关联的编译状态，并将它写入到compileStatus的第0个元素
         GLES20.glGetShaderiv(shaderObjectId, GLES20.GL_COMPILE_STATUS, compileStatus, 0);
@@ -65,7 +67,7 @@ public class GLHelper {
         // 新建程序对象
         final int progamObjectId = GLES20.glCreateProgram();
         if (progamObjectId == 0) {
-            System.out.println("创建工程失败");
+            System.out.println("创建工程失败" + GLES20.glGetError());
             return 0;
         }
 
