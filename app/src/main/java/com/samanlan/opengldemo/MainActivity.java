@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.samanlan.opengldemo.render.ColorTrianle;
+import com.samanlan.opengldemo.render.Cube;
 import com.samanlan.opengldemo.render.Square;
 import com.samanlan.opengldemo.render.Trianle;
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         // 设置OpenGLES版本为2.0
         mGLSurfaceView.setEGLContextClientVersion(2);
 //        mGLSurfaceView.setRenderer(new Trianle(this));
-        mGLSurfaceView.setRenderer(new ColorTrianle(this));
+        mGLSurfaceView.setRenderer(new Cube());
 
         isRenderSet = true;
         setContentView(mGLSurfaceView);
