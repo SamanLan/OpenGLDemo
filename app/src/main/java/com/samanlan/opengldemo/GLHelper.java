@@ -43,7 +43,7 @@ public class GLHelper {
         }
         // 创建一个新的着色器对象
         final int shaderObjectId = GLES20.glCreateShader(type);
-        if (shaderObjectId==0) {
+        if (shaderObjectId == 0) {
             System.out.println("创建着色器失败");
             return 0;
         }
